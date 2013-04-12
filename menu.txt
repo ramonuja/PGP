@@ -1,0 +1,16 @@
+
+MENÚ DE LA APLICACIÓN.
+
+1. Gestión de usuarios y grupos.
+	- Crear Usuario.
+	- Crear Grupo.
+	- Eliminar Usuario.
+	- Eliminar Grupo.
+2. Gestión de recursos.
+	- Crear Recurso.
+	- Eliminar Recurso.
+	- Modificar Permisos de un recurso.
+3. Listados.
+	- Listar Usuarios.
+	- Listar Grupos.
+	- Listar Recursos.
