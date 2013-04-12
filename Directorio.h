@@ -16,6 +16,9 @@ namespace PGP {
  */
 class Directorio: public PGP::Recurso {
 private:
+	/**
+	 * La construcción y destrucción de los recursos se hace dentro de esta clase.
+	 */
 	Recurso* *recursos;
 	int nElem;//número de recursos contenidos en un momento determinado dentro del directorio.
 public:

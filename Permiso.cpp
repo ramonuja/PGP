@@ -9,9 +9,12 @@
 
 namespace PGP {
 
-Permiso::Permiso() {
-	// TODO Auto-generated constructor stub
+Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Grupo g):
+		lectura(lectura), escritura(escritura), ejecucion(ejecucion), grupo(g), usuario(0) {
+}
 
+Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Usuario u):
+		lectura(lectura), escritura(escritura), ejecucion(ejecucion), grupo(0), usuario(u){
 }
 
 Permiso::~Permiso() {
