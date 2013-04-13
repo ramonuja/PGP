@@ -11,6 +11,8 @@
 #include "Recurso.h"
 
 namespace PGP {
+#include <string>
+using namespace std;
 /*
  *
  */
@@ -19,12 +21,13 @@ private:
 	/**
 	 * La construcción y destrucción de los recursos se hace dentro de esta clase.
 	 */
-	Recurso* *recursos;
-	int nElem;//número de recursos contenidos en un momento determinado dentro del directorio.
+	Recurso** recursos;
+	int nRecursos;//número de recursos contenidos en un momento determinado dentro del directorio.
 public:
-	aniadirRecurso(Recurso* r);
-	eliminarRecurso(int indice);
-	Directorio();
+	void crearDirectorio(string nombre);
+	void crearFichero(string nombre, string extension);
+	void eliminarRecurso(int indice);
+	Directorio(string nombre);
 	virtual ~Directorio();
 };
 

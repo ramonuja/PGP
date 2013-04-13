@@ -9,14 +9,22 @@
 
 namespace PGP {
 
-Directorio::Directorio() {
-	// TODO Auto-generated constructor stub
+Directorio::Directorio(string nombre):
+	nRecursos(0),recursos(new Recurso*[100]){
+}
 
+void Directorio::crearDirectorio(string nombre) {
+}
+
+void Directorio::crearFichero(string nombre, string extension) {
+}
+
+void Directorio::eliminarRecurso(int indice) {
 }
 
 Directorio::~Directorio() {
-	// TODO Auto-generated destructor stub
-	//TODO Eliminar los recursos de memoria al terminar.
+	for (int var = 0; var < nRecursos; ++var) delete recursos[var];
+	delete[] recursos;
 }
 
 } /* namespace PGP */

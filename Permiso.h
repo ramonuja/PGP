@@ -1,6 +1,7 @@
 
 namespace PGP {
-
+#include <string>
+using namespace std;
 /*
  *
  */
@@ -15,38 +16,16 @@ public:
 	Permiso(bool lectura, bool escritura, bool ejecucion, Grupo g);
 	Permiso(bool lectura, bool escritura, bool ejecucion, Usuario u);
 	virtual ~Permiso();
-
-	bool isEjecucion() const {
-		return ejecucion;
-	}
-
-	bool isEscritura() const {
-		return escritura;
-	}
-
-	const Grupo*& getGrupo() const {
-		return grupo;
-	}
-
-	bool isLectura() const {
-		return lectura;
-	}
-
-	const Usuario*& getUsuario() const {
-		return usuario;
-	}
-
-	void setEjecucion(bool ejecucion) {
-		this->ejecucion = ejecucion;
-	}
-
-	void setEscritura(bool escritura) {
-		this->escritura = escritura;
-	}
-
-	void setLectura(bool lectura) {
-		this->lectura = lectura;
-	}
+	bool isEjecucion() const;
+	void setEjecucion(bool ejecucion);
+	bool isEscritura() const;
+	void setEscritura(bool escritura);
+	const Grupo*& getGrupo() const;
+	bool isLectura() const;
+	void setLectura(bool lectura);
+	const Usuario*& getUsuario() const;
 };
+
+
 
 } /* namespace PGP */

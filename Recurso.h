@@ -20,17 +20,17 @@ class Recurso {
 	/**
 	 * Los permisos se crean y se destruyen dentro de esta clase.
 	 */
-	Permiso* *permisos;
+	//Permiso **permisos;
 	/**
 	 * Tamaño actual del array con los permisos.
 	 */
 	int tamPermisos;
 public:
-	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Grupo& g);
-	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Usuario& u);
-	bool retirarPermisos(Grupo& g);
-	bool retirarPermisos(Usuario& u);
-	Recurso(string nombre);
+//	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Grupo &g);
+//	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Usuario &u);
+//	bool retirarPermisos(Grupo &g);
+//	bool retirarPermisos(Usuario &u);
+	Recurso(string nombre="desconocido");
 	virtual ~Recurso();
 
 	const string& getNombre() const {
