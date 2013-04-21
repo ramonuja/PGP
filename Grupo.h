@@ -14,7 +14,7 @@ using namespace std;
 /*
  *
  */
-class Grupo 
+class Grupo
 {
 private:
 	Usuario* *constituyentes;
