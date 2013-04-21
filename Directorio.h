@@ -10,7 +10,8 @@
 
 #include "Recurso.h"
 
-namespace PGP {
+namespace PGP 
+{
 #include <string>
 using namespace std;
 /*
