@@ -7,10 +7,10 @@
 
 #ifndef USUARIO_H_
 #define USUARIO_H_
-
-namespace PGP {
 #include <string>
 using namespace std;
+
+namespace PGP {
 /*
  *
  */

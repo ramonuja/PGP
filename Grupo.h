@@ -7,10 +7,11 @@
 
 #ifndef GRUPO_H_
 #define GRUPO_H_
+#include <string>
+#include "Usuario.h"
+using namespace std;
 
 namespace PGP {
-#include <string>
-using namespace std;
 /*
  *
  */

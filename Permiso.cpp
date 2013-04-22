@@ -9,11 +9,11 @@
 
 namespace PGP {
 
-Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Grupo g):
+Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Grupo* g):
 		lectura(lectura), escritura(escritura), ejecucion(ejecucion), grupo(g), usuario(0) {
 }
 
-Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Usuario u):
+Permiso::Permiso(bool lectura, bool escritura, bool ejecucion, Usuario* u):
 		lectura(lectura), escritura(escritura), ejecucion(ejecucion), grupo(0), usuario(u){
 }
 
@@ -33,7 +33,7 @@ void Permiso::setEscritura(bool escritura) {
 	this->escritura = escritura;
 }
 
-const Grupo*& Permiso::getGrupo() const {
+const Grupo* Permiso::getGrupo() const {
 	return grupo;
 }
 
@@ -45,15 +45,12 @@ void Permiso::setLectura(bool lectura) {
 	this->lectura = lectura;
 }
 
-const Usuario*& Permiso::getUsuario() const {
+const Usuario* Permiso::getUsuario() const {
 	return usuario;
 }
 
 Permiso::~Permiso() {
 	// TODO Auto-generated destructor stub
-}
-bool Permiso::isEjecucion() const {
-	return ejecucion;
 }
 
 } /* namespace PGP */

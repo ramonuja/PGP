@@ -7,9 +7,9 @@
 
 #ifndef RECURSO_H_
 #define RECURSO_H_
-namespace PGP {
 #include <string>
 using namespace std;
+namespace PGP {
 
 /*
  *

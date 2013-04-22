@@ -8,12 +8,12 @@
 #ifndef DIRECTORIO_H_
 #define DIRECTORIO_H_
 
+#include <string>
 #include "Recurso.h"
 
+using namespace std;
 namespace PGP 
 {
-#include <string>
-using namespace std;
 /*
  *
  */

@@ -8,11 +8,11 @@
 #ifndef FICHERO_H_
 #define FICHERO_H_
 
+#include <string>
 #include "Recurso.h"
+using namespace std;
 
 namespace PGP {
-#include <string>
-using namespace std;
 /*
  *
  */

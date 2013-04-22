@@ -40,7 +40,7 @@ namespace PGP {
 //	return false;
 //}
 
-Recurso::Recurso(string nombre="desconocido"):
+Recurso::Recurso(string nombre):
 		nombre(nombre),/*permisos(new Permiso*[100]),*/tamPermisos(0) {
 
 }
