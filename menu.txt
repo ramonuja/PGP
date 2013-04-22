@@ -4,6 +4,8 @@ MENÚ DE LA APLICACIÓN.
 1. Gestión de usuarios y grupos.
 	- Crear Usuario.
 	- Crear Grupo.
+	- Modificar Usuario.
+	- Modificar Grupo.
 	- Eliminar Usuario.
 	- Eliminar Grupo.
 2. Gestión de recursos.
@@ -14,3 +16,6 @@ MENÚ DE LA APLICACIÓN.
 	- Listar Usuarios.
 	- Listar Grupos.
 	- Listar Recursos.
+4.Buscar
+	- Buscar un recurso. (Mostrar sus permisos asociados).
+	- Buscar un usuario. (Mostrar recursos asociados).
