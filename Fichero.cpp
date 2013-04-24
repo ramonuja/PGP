@@ -2,7 +2,7 @@
  * Fichero.cpp
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: Ramï¿½n
  */
 
 #include "Fichero.h"
@@ -10,6 +10,11 @@
 namespace PGP {
 
 Fichero::Fichero() {
+	// TODO Auto-generated constructor stub
+
+}
+Fichero::Fichero(string nombre, string extension, float tamanio) :
+	nombre(nombre), extension(extension), tamanio(tamanio){
 	// TODO Auto-generated constructor stub
 
 }

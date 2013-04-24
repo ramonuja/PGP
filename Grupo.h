@@ -2,7 +2,7 @@
  * Grupo.h
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: Ramï¿½n
  */
 
 #ifndef GRUPO_H_
@@ -18,12 +18,13 @@ namespace PGP {
 class Grupo
 {
 private:
-	Usuario* *constituyentes;
+	int nConstituyentes;
+	Usuario** constituyentes;
 	string nombre;
 public:
-	bool altaUsuario(Usuario u);
-	bool bajaUsuario(Usuario u);
-	Grupo();
+	void altaUsuario(Usuario* u);
+	void bajaUsuario(Usuario* u);
+	Grupo(string nombre);
 	virtual ~Grupo();
 };
 

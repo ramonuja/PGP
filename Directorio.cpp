@@ -2,21 +2,27 @@
  * Directorio.cpp
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: Ramï¿½n
  */
 
 #include "Directorio.h"
+#include "Fichero.h"
 
 namespace PGP {
 
 Directorio::Directorio(string nombre):
-	nRecursos(0),recursos(new Recurso*[100]){
+	recursos(new Recurso*[100]),nRecursos(0){
 }
 
 void Directorio::crearDirectorio(string nombre) {
+	Directorio *d = new Directorio(nombre);
+	this->recursos[nRecursos++] = d;
+
 }
 
 void Directorio::crearFichero(string nombre, string extension) {
+	Fichero *f = new Fichero();
+	this->recursos[nRecursos++] = f;
 }
 
 void Directorio::eliminarRecurso(int indice) {
