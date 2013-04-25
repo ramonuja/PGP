@@ -18,8 +18,8 @@ namespace PGP {
 class Grupo
 {
 private:
-	int nConstituyentes;
 	Usuario** constituyentes;
+	int nConstituyentes;
 	string nombre;
 public:
 	void altaUsuario(Usuario* u);

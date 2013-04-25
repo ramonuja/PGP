@@ -18,13 +18,14 @@ namespace PGP {
  */
 class Fichero: public PGP::Recurso {
 private:
-	string nombre;
 	string extension;
 	float tamanio;
 public:
-	Fichero();
-	Fichero(string nombre,string extension, float tamanio);
+	Fichero(string nombre,string extension, float tamanio, Usuario* u);
 	virtual ~Fichero();
+	virtual string getNombre();
+	virtual int getTamanio();
+	virtual bool esDirectorio();
 };
 
 } /* namespace PGP */

@@ -2,44 +2,36 @@
  * Recurso.h
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: RamÃ³n
  */
 
 #ifndef RECURSO_H_
 #define RECURSO_H_
 #include <string>
+#include "Usuario.h"
+
 using namespace std;
 namespace PGP {
 
-/*
- *
- */
 class Recurso {
-	private:
+private:
+	short permisosActuales;
+	Usuario *u;
+protected:
 	string nombre;
-	/**
-	 * Los permisos se crean y se destruyen dentro de esta clase.
-	 */
-	//Permiso **permisos;
-	/**
-	 * Tamaño actual del array con los permisos.
-	 */
-	int tamPermisos;
 public:
-//	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Grupo &g);
-//	void garantizarPermisos(bool lectura, bool escritura, bool ejecucion, Usuario &u);
-//	bool retirarPermisos(Grupo &g);
-//	bool retirarPermisos(Usuario &u);
-	Recurso(string nombre="desconocido");
+	enum AMBITOS {OTROS = 1, GRUPO = 8, PROPIETARIO = 64};
+	enum PERMISOS { EJECUCION, ESCRITURA, LECTURA};
+	int asignarPermisos(bool valor, short ambito, short permiso);
+	int consultarPermiso(short ambito, short permiso);
+	Recurso(string nombre, Usuario* u);
 	virtual ~Recurso();
-
-	const string& getNombre() const {
-		return nombre;
-	}
-
-	void setNombre(const string& nombre) {
-		this->nombre = nombre;
-	}
+	short getPermisosActuales() const;
+	void setPermisosActuales(short permisosActuales);
+	virtual string getNombre()=0;
+	virtual int getTamanio()=0;
+	virtual bool esDirectorio()=0;
+	string getDescripcion();
 };
 
 } /* namespace PGP */

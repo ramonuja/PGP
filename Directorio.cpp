@@ -10,18 +10,19 @@
 
 namespace PGP {
 
-Directorio::Directorio(string nombre):
-	recursos(new Recurso*[100]),nRecursos(0){
+Directorio::Directorio(string nombre, Usuario* usuario):
+		Recurso(nombre,usuario),recursos(new Recurso*[100]),nRecursos(0){
+
 }
 
-void Directorio::crearDirectorio(string nombre) {
-	Directorio *d = new Directorio(nombre);
+void Directorio::crearDirectorio(string nombre, Usuario* u) {
+	Directorio *d = new Directorio(nombre,u);
 	this->recursos[nRecursos++] = d;
 
 }
 
-void Directorio::crearFichero(string nombre, string extension) {
-	Fichero *f = new Fichero();
+void Directorio::crearFichero(string nombre, string extension, int tamanio, Usuario* u) {
+	Fichero *f = new Fichero(nombre, extension, tamanio, u);
 	this->recursos[nRecursos++] = f;
 }
 
@@ -31,6 +32,19 @@ void Directorio::eliminarRecurso(int indice) {
 Directorio::~Directorio() {
 	for (int var = 0; var < nRecursos; ++var) delete recursos[var];
 	delete[] recursos;
+}
+
+
+string Directorio::getNombre() {
+	return this->nombre;
+}
+
+int Directorio::getTamanio() {
+	return 0;
+}
+
+bool Directorio::esDirectorio() {
+	return true;
 }
 
 } /* namespace PGP */
