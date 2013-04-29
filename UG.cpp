@@ -39,14 +39,32 @@ void UG::eliminarRelacion(Usuario* u, Grupo* g) {
 UG_struct** UG::getRelaciones() const {
 	return relaciones;
 }
-ItUsuarios UG::getUsuarios(Grupo* g) {
-	//Usuario* us[MAX_RELACIONES];
-	ItUsuarios iu(NULL,NULL);
-	return iu;
+int UG::getUsuarios(Grupo* g, Usuario** usuarios) {
+	//primero cuento el número de usuarios del grupo
+	int count = 0;
+	for (int var = 0; var < nRelaciones; ++var) {
+		if(this->relaciones[var]->g == g) count ++;
+	}
+	usuarios = new Usuario*[count];
+	count = 0;
+	for (int var = 0; var < nRelaciones; ++var) {
+		if(this->relaciones[var]->g == g) usuarios[count++] = this->relaciones[var]->u;
+	}
+	return count;
 }
 
-void UG::getGrupos(Usuario* u) {
-	//return NULL;
+int UG::getGrupos(Usuario* u, Grupo** grupos) {
+	//primero cuento el número de grupos a los que está asociado el usuario
+		int count = 0;
+		for (int var = 0; var < nRelaciones; ++var) {
+			if(this->relaciones[var]->u == u) count ++;
+		}
+		grupos = new Grupo*[count];
+		count = 0;
+		for (int var = 0; var < nRelaciones; ++var) {
+			if(this->relaciones[var]->u == u) grupos[count++] = this->relaciones[var]->g;
+		}
+		return count;
 }
 
 int UG::getNRelaciones() const{

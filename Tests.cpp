@@ -8,7 +8,6 @@
 #include <iostream>
 #include "Tests.h"
 #include "Directorio.h"
-#include "ItUsuarios.h"
 #include "UG.h"
 #include "Grupo.h"
 

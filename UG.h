@@ -8,8 +8,6 @@
 #ifndef UG_H_
 #define UG_H_
 #define MAX_RELACIONES 1000
-class ItUsuarios;
-#include "ItUsuarios.h"
 #include "Usuario.h"
 #include "Grupo.h"
 
@@ -27,8 +25,8 @@ public:
 	virtual ~UG();
 	void aniadirRelacion(Usuario* u, Grupo* g) ;
 	void eliminarRelacion(Usuario* u, Grupo* g) ;
-	ItUsuarios getUsuarios(Grupo *g);
-	void getGrupos(Usuario *u);
+	int getUsuarios(Grupo *g, Usuario** u);
+	int getGrupos(Usuario *u, Grupo** g);
 	UG_struct** getRelaciones() const;
 	int getNRelaciones() const;
 };
