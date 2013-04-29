@@ -12,6 +12,7 @@ using namespace PGP;
 class Tests {
 private:
 	Usuario *u;
+	Grupo *g;
 public:
 	Tests();
 	virtual ~Tests();

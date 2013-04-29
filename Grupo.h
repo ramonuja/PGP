@@ -9,6 +9,7 @@
 #define GRUPO_H_
 #include <string>
 #include "Usuario.h"
+
 using namespace std;
 
 namespace PGP {
@@ -18,14 +19,12 @@ namespace PGP {
 class Grupo
 {
 private:
-	Usuario** constituyentes;
-	int nConstituyentes;
 	string nombre;
 public:
-	void altaUsuario(Usuario* u);
-	void bajaUsuario(Usuario* u);
 	Grupo(string nombre);
 	virtual ~Grupo();
+	string getNombre();
+	void setNombre(string nombre);
 };
 
 } /* namespace PGP */

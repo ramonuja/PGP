@@ -10,21 +10,18 @@
 namespace PGP {
 
 Grupo::Grupo(string nombre):
-	constituyentes(new Usuario*[100]), nConstituyentes(0),nombre(nombre){
+	nombre(nombre){
 	// TODO Auto-generated constructor stub
 }
 
-void Grupo::bajaUsuario(Usuario* u) {
-	for (int var = 0; var < this->nConstituyentes; ++var){
-		if(this->constituyentes[var] == u){
-			this->constituyentes[var] = this->constituyentes[--nConstituyentes];
-			break;
-		}
-	}
+string Grupo::getNombre()  {
+	return nombre;
 }
-void Grupo::altaUsuario(Usuario *u) {
-	this->constituyentes[nConstituyentes++] = u;
+
+void Grupo::setNombre( string nombre) {
+	this->nombre = nombre;
 }
+
 Grupo::~Grupo() {
 	// TODO Auto-generated destructor stub
 }

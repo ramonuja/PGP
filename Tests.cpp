@@ -8,10 +8,14 @@
 #include <iostream>
 #include "Tests.h"
 #include "Directorio.h"
+#include "ItUsuarios.h"
+#include "UG.h"
+#include "Grupo.h"
 
 using namespace std;
 Tests::Tests() {
-	u = new Usuario();
+	g = new Grupo ("patatasfritas");
+	u = new Usuario("Ramón");
 
 }
 
@@ -74,5 +78,6 @@ void Tests::testGestionPermisos() {
 
 
 		cout << "Probando la descripción: " << r.getDescripcion() << endl;
+		//ItUsuarios iu(NULL,NULL);
 
 }

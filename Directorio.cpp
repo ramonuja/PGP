@@ -2,8 +2,8 @@
  * Directorio.cpp
  *
  *  Created on: 12/04/2013
- *      Author: Ram�n
- */
+ *      Author: Ramón Díaz Valenzuela
+ *       */
 
 #include "Directorio.h"
 #include "Fichero.h"

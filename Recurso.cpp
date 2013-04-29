@@ -57,9 +57,12 @@ string Recurso::getDescripcion() {
 		if(consultarPermiso(var,ESCRITURA)) perm[aux+1] = 'e'; else perm[aux+1] = '-';
 		if(consultarPermiso(var,EJECUCION)) perm[aux+2] = 'x'; else perm[aux+2] = '-';
 	}
-
 	perm[9] = 0;
-	return perm;
+	string s(perm);
+	s.append("  " + u->getNombre());
+	//s.append("\t" + u->getGrupo()->getNombre());
+	s.append("\n......");
+	return s;
 }
 
 } /* namespace PGP */
