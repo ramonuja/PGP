@@ -4,7 +4,6 @@
  *  Created on: 12/04/2013
  *      Author: Ramón Díaz Valenzuela
  *       */
-
 #include "Directorio.h"
 #include "Fichero.h"
 
@@ -27,6 +26,8 @@ void Directorio::crearFichero(string nombre, string extension, int tamanio, Usua
 }
 
 void Directorio::eliminarRecurso(int indice) {
+	delete this->recursos[indice];
+	this->recursos[indice] = this->recursos[--nRecursos];
 }
 
 Directorio::~Directorio() {

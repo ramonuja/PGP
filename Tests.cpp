@@ -10,6 +10,7 @@
 #include "Directorio.h"
 #include "UG.h"
 #include "Grupo.h"
+#include "Aplicacion.h"
 
 using namespace std;
 Tests::Tests() {
@@ -78,5 +79,18 @@ void Tests::testGestionPermisos() {
 
 		cout << "Probando la descripción: " << r.getDescripcion() << endl;
 		//ItUsuarios iu(NULL,NULL);
+
+}
+
+void Tests::testUG() {
+	Aplicacion p;
+	p.parsear("cu ramon");
+	p.parsear("cu angel");
+	p.parsear("cg madrid");
+	p.parsear("cg barcelona");
+	p.parsear("au ramon madrid");
+	p.parsear("bg ramon");
+	p.parsear("bg ramon");
+
 
 }

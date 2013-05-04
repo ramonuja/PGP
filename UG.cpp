@@ -4,9 +4,7 @@
  *  Created on: 26/04/2013
  *      Author: druida
  */
-
 #include "UG.h"
-
 namespace PGP {
 
 UG::UG(): relaciones(new UG_struct* [MAX_RELACIONES]),nRelaciones(0) {
@@ -39,33 +37,44 @@ void UG::eliminarRelacion(Usuario* u, Grupo* g) {
 UG_struct** UG::getRelaciones() const {
 	return relaciones;
 }
-int UG::getUsuarios(Grupo* g, Usuario** usuarios) {
+/**
+ * Devuelve los usuarios asociados a un Grupo.
+ * IMPORTANTE!: Recordar liberar memoria asignada al vector de usuarios.
+ */
+Usuario** UG::getUsuarios(Grupo* g) {
 	//primero cuento el número de usuarios del grupo
 	int count = 0;
 	for (int var = 0; var < nRelaciones; ++var) {
 		if(this->relaciones[var]->g == g) count ++;
 	}
-	usuarios = new Usuario*[count];
+	Usuario ** usuarios = new Usuario*[count+1];
 	count = 0;
 	for (int var = 0; var < nRelaciones; ++var) {
 		if(this->relaciones[var]->g == g) usuarios[count++] = this->relaciones[var]->u;
 	}
-	return count;
+	usuarios[count] = 0;
+	return usuarios;
 }
 
-int UG::getGrupos(Usuario* u, Grupo** grupos) {
+/**
+ * IMPORTANTE!: Liberar memoria del vector de grupos.
+ */
+Grupo** UG::getGrupos(Usuario* u) {
 	//primero cuento el número de grupos a los que está asociado el usuario
 		int count = 0;
 		for (int var = 0; var < nRelaciones; ++var) {
 			if(this->relaciones[var]->u == u) count ++;
 		}
-		grupos = new Grupo*[count];
+		Grupo** grupos = new Grupo*[count];
 		count = 0;
 		for (int var = 0; var < nRelaciones; ++var) {
-			if(this->relaciones[var]->u == u) grupos[count++] = this->relaciones[var]->g;
+			if(this->relaciones[var]->u == u)
+				grupos[count++] = this->relaciones[var]->g;
 		}
-		return count;
+		grupos[count]=0;
+		return grupos;
 }
+
 
 int UG::getNRelaciones() const{
 	return nRelaciones;

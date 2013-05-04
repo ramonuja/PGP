@@ -17,6 +17,7 @@ public:
 	Tests();
 	virtual ~Tests();
 	void testGestionPermisos();
+	void testUG();
 };
 
 #endif /* TESTS_H_ */

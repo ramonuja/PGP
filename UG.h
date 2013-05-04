@@ -25,8 +25,8 @@ public:
 	virtual ~UG();
 	void aniadirRelacion(Usuario* u, Grupo* g) ;
 	void eliminarRelacion(Usuario* u, Grupo* g) ;
-	int getUsuarios(Grupo *g, Usuario** u);
-	int getGrupos(Usuario *u, Grupo** g);
+	Usuario** getUsuarios(Grupo *g);
+	Grupo** getGrupos(Usuario *u);
 	UG_struct** getRelaciones() const;
 	int getNRelaciones() const;
 };

@@ -8,38 +8,43 @@
 #include <string>
 #include <math.h>
 #include "Tests.h"
+#include "Aplicacion.h"
+
 
 using namespace std;
+using namespace PGP;
 enum AMBITOS {OTROS = 1, GRUPO = 8, PROPIETARIO = 64};
 enum PERMISOS { EJECUCION, ESCRITURA, LECTURA};
 
 short permisosActuales = 0;
 
-int modificarPermisos(bool valor, short ambito, short permiso){
-	if ((ambito != OTROS && ambito != GRUPO && ambito != PROPIETARIO)
-			||(permiso != EJECUCION && permiso != ESCRITURA && permiso != LECTURA)) return 1;
-	short mascara = ambito *  (0x0001 << permiso);
-	if (!valor){//denegar un permiso
-		mascara = 0x01FF xor mascara;//inversión de la máscara
-		permisosActuales = permisosActuales & mascara;
-	}else{//garantizar un permiso.
-		permisosActuales = permisosActuales | mascara;
-	}
-	return 0;
-}
 
-int consultarPermiso(short ambito, short permiso){
-	if ((ambito != OTROS && ambito != GRUPO && ambito != PROPIETARIO)
-				||(permiso != EJECUCION && permiso != ESCRITURA && permiso != LECTURA)) return -1;
-	short mascara = ambito *  (0x0001 << permiso);
-	return ((permisosActuales & mascara) >> ((short)log2(mascara)));
-}
+void tests(){
+	Tests t;
+	//t.testGestionPermisos();
+	t.testUG();
 
+}
 
 int main(int argc, char **argv) {
-	Tests t;
-	t.testGestionPermisos();
-}
+	//enviar parametro debug para depurar. Método tests().
+	if (argc>1){
+		string s(argv[1]);
+		if(s == "debug"){
+			tests();
+			return 0;
+		}
+	}
+	int cod = 0;
+	Aplicacion p;
+	while(true){
+		cout << endl << "PGP::" ;
+		string s;
+		getline(cin, s);
+		cod = p.parsear(s);
+		if (cod == -1) break;
+	}//end_outerwhile
+}//end_main
 
 
 
