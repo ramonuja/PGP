@@ -2,7 +2,7 @@
  * Parseador.h
  *
  *  Created on: 03/05/2013
- *      Author: druida
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #ifndef PARSEADOR_H_
@@ -11,6 +11,7 @@
 #include "Usuario.h"
 #include "Grupo.h"
 #include "UG.h"
+#include "Directorio.h"
 using namespace std;
 namespace PGP {
 
@@ -21,6 +22,8 @@ private:
 	Grupo** grupos;
 	int nGrupos;
 	UG* relaciones;
+	Directorio* dirActual;
+	Usuario* uActual;
 
 	void crearUsuario(string nombre);
 	void eliminarUsuario(string nombre);
@@ -37,7 +40,16 @@ private:
 	Grupo* getGrupoPorNombre(string nombre);
 	void listarGrupos(string usuario);
 	void listarUsuarios(string grupo);
+	string getPrompt(Directorio *d);
+	void listarRecursos();
+	void cargarDirectorio(string dir);
+	void login(string l);
+	void borrarRecurso(string nombre);
+	void renombrarRecurso(string antNom, string nueNom);
+	void buscarRecursoxUsuario(string nomUs);
+	void buscarRecursoxNombre(string cadena);
 public:
+	string getPrompt();
 	int parsear(string s);
 	Aplicacion();
 	virtual ~Aplicacion();

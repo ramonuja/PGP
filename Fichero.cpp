@@ -2,14 +2,14 @@
  * Fichero.cpp
  *
  *  Created on: 12/04/2013
- *      Author: Ram�n
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #include "Fichero.h"
 
 namespace PGP {
 
-Fichero::Fichero(string nombre, string extension, float tamanio, Usuario* u) :
+Fichero::Fichero(string nombre, string extension, int tamanio, Usuario* u) :
 		Recurso(nombre,u),extension(extension), tamanio(tamanio){
 	// TODO Auto-generated constructor stub
 
@@ -29,6 +29,12 @@ int Fichero::getTamanio() {
 
 bool Fichero::esDirectorio() {
 	return false;
+}
+
+void Fichero::setNombre(string nombre) {
+	long int p = nombre.find(".");
+	this->nombre = nombre.substr(0,p);
+	this->extension = nombre.substr(p+1,nombre.length()-1);
 }
 
 } /* namespace PGP */

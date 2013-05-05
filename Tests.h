@@ -2,7 +2,7 @@
  * Tests.h
  *
  *  Created on: 25/04/2013
- *      Author: druida
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #ifndef TESTS_H_

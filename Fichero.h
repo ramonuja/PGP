@@ -2,7 +2,7 @@
  * Fichero.h
  *
  *  Created on: 12/04/2013
- *      Author: Ram�n
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #ifndef FICHERO_H_
@@ -19,13 +19,14 @@ namespace PGP {
 class Fichero: public PGP::Recurso {
 private:
 	string extension;
-	float tamanio;
+	int tamanio;
 public:
-	Fichero(string nombre,string extension, float tamanio, Usuario* u);
+	Fichero(string nombre,string extension, int tamanio, Usuario* u);
 	virtual ~Fichero();
 	virtual string getNombre();
 	virtual int getTamanio();
 	virtual bool esDirectorio();
+	virtual void setNombre(string nombre);
 };
 
 } /* namespace PGP */

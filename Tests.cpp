@@ -2,7 +2,7 @@
  * Tests.cpp
  *
  *  Created on: 25/04/2013
- *      Author: druida
+ *      Author: Ramón Díaz Valenzuela
  */
 #include <string>
 #include <iostream>
@@ -24,7 +24,7 @@ Tests::~Tests() {
 }
 
 void Tests::testGestionPermisos() {
-	Directorio r("asfdasdf", u);
+	Directorio r("asfdasdf", u,0);
 	cout << "Los permisos actuales son: " << hex << r.getPermisosActuales() << endl;
 		cout << "Añado permisos de ejecución al r.PROPIETARIO..." << endl;
 		r.asignarPermisos(true, r.PROPIETARIO, r.EJECUCION);
@@ -63,7 +63,7 @@ void Tests::testGestionPermisos() {
 
 
 		cout << "Creando un objeto con los permisos por defecto: " << endl;
-		Directorio aux("asfdasdf",u);
+		Directorio aux("asfdasdf",u,0);
 		r = aux;
 		cout << "Permiso Otros-Lectura: "  << r.consultarPermiso(r.OTROS,r.LECTURA) << endl;
 		cout << "Permiso Otros-Escritura: "  << r.consultarPermiso(r.OTROS,r.ESCRITURA) << endl;
@@ -86,11 +86,30 @@ void Tests::testUG() {
 	Aplicacion p;
 	p.parsear("cu ramon");
 	p.parsear("cu angel");
-	p.parsear("cg madrid");
-	p.parsear("cg barcelona");
-	p.parsear("au ramon madrid");
+	p.parsear("cg jaen");
+	p.parsear("cg granada");
+	p.parsear("au ramon jaen");
 	p.parsear("bg ramon");
 	p.parsear("bg ramon");
+	p.parsear("au angel granada");
+	cout << "INFO: Desasignar ramon al grupo jaen" << endl;
+	p.parsear("du ramon jaen");
+	cout << "INFO: Listar grupos de Ramón" << endl;
+	p.parsear("bg ramon");
+	cout << "INFO: Asignar ramon a granada" << endl;
+	p.parsear("au ramon granada");
+	cout << "INFO: Listar usuarios de granada" << endl;
+	p.parsear("bu granada");
+	cout << "INFO: Asignar ramon a jaen de nuevo" << endl;
+	p.parsear("au ramon jaen");
+	cout << "INFO: listar grupos de ramon" << endl;
+	p.parsear("bg ramon");
+	cout << "INFO:Crear directorio" << endl;
+	p.parsear("mkd unDirectorio");
+	cout << "INFO: Crear fichero." << endl;
+	p.parsear("mkf fich exe 992892");
+	cout << "INFO: listar ambos." << endl;
+	p.parsear("ls");
 
 
 }

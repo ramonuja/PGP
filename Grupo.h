@@ -2,7 +2,7 @@
  * Grupo.h
  *
  *  Created on: 12/04/2013
- *      Author: Ram�n
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #ifndef GRUPO_H_

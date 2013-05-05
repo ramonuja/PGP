@@ -2,12 +2,12 @@
  * Recurso.cpp
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #include "Recurso.h"
 #include "math.h"
-
+#include <sstream>
 namespace PGP {
 
 int Recurso::asignarPermisos(bool valor, short ambito, short permiso){
@@ -49,6 +49,10 @@ short Recurso::getPermisosActuales() const {
 Recurso::~Recurso() {
 }
 
+Usuario* Recurso::getUsuario() {
+	return u;
+}
+
 string Recurso::getDescripcion() {
 	char perm[10];
 	int aux = 0;
@@ -59,10 +63,14 @@ string Recurso::getDescripcion() {
 	}
 	perm[9] = 0;
 	string s(perm);
-	s.append("  " + u->getNombre());
-	//s.append("\t" + u->getGrupo()->getNombre());
-	s.append("\n......");
-	return s;
+	stringstream ss;
+	ss << s;
+	ss << "  " << u->getNombre();
+	ss <<"  " << this->getNombre();
+	ss <<"  " << this->getTamanio();
+	this->esDirectorio()?ss<< "D":ss<<" ";
+
+	return ss.str();
 }
 
 } /* namespace PGP */

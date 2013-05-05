@@ -2,7 +2,7 @@
  * main.cpp
  *
  *  Created on: 13/04/2013
- *      Author: Ram�n
+ *      Author: Ramón Díaz Valenzuela
  */
 #include <iostream>
 #include <string>
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 	int cod = 0;
 	Aplicacion p;
 	while(true){
-		cout << endl << "PGP::" ;
+		cout << endl << p.getPrompt() ;
 		string s;
 		getline(cin, s);
 		cod = p.parsear(s);

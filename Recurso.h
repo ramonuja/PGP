@@ -2,7 +2,7 @@
  * Recurso.h
  *
  *  Created on: 12/04/2013
- *      Author: Ramón
+ *      Author: Ramón Díaz Valenzuela
  */
 
 #ifndef RECURSO_H_
@@ -31,7 +31,9 @@ public:
 	virtual string getNombre()=0;
 	virtual int getTamanio()=0;
 	virtual bool esDirectorio()=0;
+	virtual void setNombre(string nombre) = 0;
 	string getDescripcion();
+	Usuario* getUsuario();
 };
 
 } /* namespace PGP */

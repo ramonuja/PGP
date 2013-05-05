@@ -2,7 +2,7 @@
  * UG.cpp
  *
  *  Created on: 26/04/2013
- *      Author: druida
+ *      Author: Ramón Díaz Valenzuela
  */
 #include "UG.h"
 namespace PGP {
