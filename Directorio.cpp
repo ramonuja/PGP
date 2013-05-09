@@ -85,4 +85,10 @@ void Directorio::setNombre(string nombre) {
 	this->nombre = nombre;
 }
 
+Recurso* Directorio::getRecursoxNombre(string nombre) {
+	for (int var = 0; var < nRecursos; ++var) {
+		if (this->recursos[var]->getNombre() == nombre) return this->recursos[var];
+	}
+	return 0;
+}
 } /* namespace PGP */

@@ -40,7 +40,8 @@
 //NAVEGACION
 #define CARGAR_DIRECTORIO "cd"
 #define VOLVER_ATRAS "cd.."
-
+//PERMISOS
+#define ASIGNAR_PERMISOS "ap"
 #include "Aplicacion.h"
 #include <fstream>
 #include <sstream>
@@ -54,16 +55,91 @@ Aplicacion::Aplicacion():
 	usuarios(new Usuario*[N_USUARIOS]), nUsuarios(0),
 	grupos(new Grupo*[N_GRUPOS]), nGrupos(0),
 	relaciones(new UG){
-	this->parsear("cu sys");
+	//carga de los datos de fichero de grupos y usuarios.
+	//Ficheros usuarios.dat y grupos.dat respectivamente.
+	ifstream f;
+	string nombreArchivo = "usuarios.dat";
+	f.open(nombreArchivo.c_str());
+	if(f.good()){
+		string s;
+		while(!f.eof()){
+			getline(f,s);
+			if(s.empty()) continue;
+			Usuario * u = crearUsuario("temporal");
+			if(u!=NULL) u->fromCSV(s);
+		}
+	}
+	f.close();
+	nombreArchivo = "grupos.dat";
+	f.open(nombreArchivo.c_str());
+	if(f.good()){
+		string s;
+		while(!f.eof()){
+			getline(f,s);
+			if(s.empty()) continue;
+			Grupo * u = crearGrupo("temporal");
+			if (u!=NULL)u->fromCSV(s);
+		}
+	}
+	f.close();
 	PGP::Usuario* u;
-	u = getUsuarioPorNombre("sys");
+
+	u = getUsuarioPorNombre("system");
+	if(u == 0) u = crearUsuario("system");
 	uActual = u;
 	dirActual = new Directorio("base",u,NULL);
 }
 
+void Aplicacion::gestionarCambioPermisos(string nombreFichero, string ambito,
+		const string& tipoPermiso, int valorPermiso) {
+	Recurso* r = this->dirActual->getRecursoxNombre(nombreFichero);
+	if(uActual!=r->getUsuario()){
+		mostrarMensaje("No eres el propietario del recurso, por favor logéate como tal");
+		return;
+	}
+	if (r == 0) {
+		mostrarMensaje("Recurso no encontrado.");
+		return;
+	}
+	short nAmb = 0;
+	if (ambito == "-p") {
+		nAmb = dirActual->PROPIETARIO;
+	}else if(ambito == "-g"){
+		nAmb = dirActual->GRUPO;
+	}else if(ambito == "-o"){
+		nAmb = dirActual->OTROS;
+	}else{
+		mostrarMensaje("Sintaxis incorrecta");
+		return;
+	}
+	short nTP = 0;
+	if (tipoPermiso == "-l") {
+		nTP = dirActual->LECTURA;
+	}else if(tipoPermiso == "-e"){
+		nTP = dirActual->ESCRITURA;
+	}else if(tipoPermiso == "-x"){
+		nTP = dirActual->EJECUCION;
+	}else{
+		mostrarMensaje("Sintaxis incorrecta");
+		return;
+	}
+	bool valPerm = false;
+	if (valorPermiso == 1) {
+		valPerm = true;
+	}else if(valorPermiso == 0){
+		valPerm = false;
+	}else{
+		mostrarMensaje("Sintaxis incorrecta");
+		return;
+	}
+	r->asignarPermisos(valPerm,nAmb,nTP);
+	mostrarMensaje("Permiso asignado");
+}
+
 int Aplicacion::parsear(string s) {
 	stringstream ss(s);
-	string comando,saux,saux2;
+	string comando,saux,saux2,saux3;
+	int iaux = 0;
 	ss >> comando;
 	//LOGIN
 	if (comando == LOGIN){
@@ -194,15 +270,27 @@ int Aplicacion::parsear(string s) {
 			}
 			return 1;
 		}
+		//PERMISOS
+		if (comando==ASIGNAR_PERMISOS){
+			ss >> saux;//nombre del fichero
+			ss >> saux2;//ambito
+			ss >> saux3;//tipopermiso
+			ss >> iaux;//valor
+		gestionarCambioPermisos(saux, saux2, saux3, iaux);
+		return 1;
+		}
 	//SALIR
 	if (comando == SALIR) return -1;
 	mostrarMensaje("Comando no reconocido.");
 	return 0;
 }//end_method
 
-void Aplicacion::crearUsuario(string nombre){
-	usuarios[nUsuarios++] = new Usuario(nombre);
+Usuario* Aplicacion::crearUsuario(string nombre){
+	if (nombre == "") return 0;
+	Usuario* u = new Usuario(nombre);
+	usuarios[nUsuarios++] = u;
 	mostrarMensaje("Usuario " + nombre + " creado.");
+	return u;
 }
 
 void Aplicacion::eliminarUsuario(string nombre) {
@@ -232,9 +320,12 @@ void Aplicacion::mostrarMensaje(string s) {
 	cout << s << endl;
 }
 
-void Aplicacion::crearGrupo(string nombre) {
-	grupos[nGrupos++] = new Grupo(nombre);
+Grupo* Aplicacion::crearGrupo(string nombre) {
+	if (nombre=="")return 0;
+	Grupo * g = new Grupo(nombre);
+	grupos[nGrupos++] = g;
 		mostrarMensaje("Grupo " + nombre + " creado.");
+		return g;
 }
 
 void Aplicacion::eliminarGrupo(string nombre) {
@@ -412,10 +503,27 @@ void Aplicacion::buscarRecursoxNombre(string cadena) {
 }
 
 Aplicacion::~Aplicacion() {
-	for (int var = 0; var < nUsuarios; ++var) delete usuarios[var];
-		delete[] usuarios;
-	for (int var = 0; var < nGrupos; ++var) delete grupos[var];
-		delete[] grupos;
+	ofstream f;
+	string nombreArchivo = "usuarios.dat";
+	f.open(nombreArchivo.c_str());
+	for (int var = 0; var < nUsuarios; ++var){
+		if(f.good()){
+			f << usuarios[var]->toCSV() << endl;
+		}
+		delete usuarios[var];
+	}
+	f.close();
+	delete[] usuarios;
+	nombreArchivo = "grupos.dat";
+	f.open(nombreArchivo.c_str());
+	for (int var = 0; var < nGrupos; ++var) {
+				if(f.good()){
+					f << grupos[var]->toCSV() << endl;
+				}
+		delete grupos[var];
+	}
+	f.close();
+	delete[] grupos;
 	delete relaciones;
 }
 

@@ -43,6 +43,7 @@ public:
 	vector<Recurso*> recorrer();
 	vector<Recurso*> recorrer(Directorio* d);
 	virtual void setNombre(string nombre);
+	Recurso* getRecursoxNombre(string nombre);
 };
 
 } /* namespace PGP */

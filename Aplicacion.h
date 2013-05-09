@@ -25,11 +25,11 @@ private:
 	Directorio* dirActual;
 	Usuario* uActual;
 
-	void crearUsuario(string nombre);
+	Usuario* crearUsuario(string nombre);
 	void eliminarUsuario(string nombre);
 	void renombrarUsuario (string antNom, string nueNom);
 	void listarUsuarios();
-	void crearGrupo(string nombre);
+	Grupo* crearGrupo(string nombre);
 	void eliminarGrupo(string nombre);
 	void renombrarGrupo (string antNom, string nueNom);
 	void listarGrupos();
@@ -48,6 +48,9 @@ private:
 	void renombrarRecurso(string antNom, string nueNom);
 	void buscarRecursoxUsuario(string nomUs);
 	void buscarRecursoxNombre(string cadena);
+	void gestionarCambioPermisos(string nombreFichero, string ambito,
+			const string& tipoPermiso, int valorPermiso);
+
 public:
 	string getPrompt();
 	int parsear(string s);

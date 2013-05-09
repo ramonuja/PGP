@@ -110,6 +110,7 @@ void Tests::testUG() {
 	p.parsear("mkf fich exe 992892");
 	cout << "INFO: listar ambos." << endl;
 	p.parsear("ls");
+	p.parsear("ap fich.exe -p -x 1");
 
 
 }

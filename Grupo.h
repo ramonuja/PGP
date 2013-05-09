@@ -9,6 +9,7 @@
 #define GRUPO_H_
 #include <string>
 #include "Usuario.h"
+#include "ICSV.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ namespace PGP {
 /*
  *
  */
-class Grupo
+class Grupo : public ICSV
 {
 private:
 	string nombre;
@@ -25,6 +26,8 @@ public:
 	virtual ~Grupo();
 	string getNombre();
 	void setNombre(string nombre);
+	virtual void fromCSV(string s);
+	virtual string toCSV();
 };
 
 } /* namespace PGP */

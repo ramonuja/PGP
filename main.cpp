@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <exception>
 #include "Tests.h"
 #include "Aplicacion.h"
 
@@ -27,6 +28,7 @@ void tests(){
 }
 
 int main(int argc, char **argv) {
+	try{
 	//enviar parametro debug para depurar. Método tests().
 	if (argc>1){
 		string s(argv[1]);
@@ -44,6 +46,9 @@ int main(int argc, char **argv) {
 		cod = p.parsear(s);
 		if (cod == -1) break;
 	}//end_outerwhile
+	}catch(exception & e){
+		cout << e.what() << endl;
+	}
 }//end_main
 
 

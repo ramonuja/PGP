@@ -9,13 +9,14 @@
 #define USUARIO_H_
 #include <string>
 #include "Grupo.h"
+#include "ICSV.h"
 using namespace std;
 
-namespace PGP {
+namespace PGP{
 /*
  *
  */
-class Usuario {
+class Usuario : public ICSV{
 private:
 	string nombre;
 public:
@@ -23,6 +24,8 @@ public:
 	virtual ~Usuario();
 	string getNombre();
 	void setNombre( string nombre);
+	virtual void fromCSV(string s);
+	virtual string toCSV();
 };
 
 } /* namespace PGP */
