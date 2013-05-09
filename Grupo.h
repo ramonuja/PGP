@@ -1,8 +1,8 @@
 /*
  * Grupo.h
- *
- *  Created on: 12/04/2013
- *      Author: Ramón Díaz Valenzuela
+ *	@brief Almacena un grupo.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef GRUPO_H_

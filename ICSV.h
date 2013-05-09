@@ -1,8 +1,8 @@
 /*
- * ISerializable.h
- *
- *  Created on: 08/05/2013
- *      Author: druida
+ * ICSV.h
+ *	@brief Interfaz para pasar los datos a o desde una cadena.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef ISERIALIZABLE_H_

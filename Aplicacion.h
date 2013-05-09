@@ -1,8 +1,8 @@
 /*
- * Parseador.h
- *
- *  Created on: 03/05/2013
- *      Author: Ramón Díaz Valenzuela
+ * Aplicacion.h
+ *	@brief  Punto de inicio de la aplicación.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef PARSEADOR_H_

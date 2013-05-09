@@ -1,8 +1,8 @@
 /*
  * Usuario.h
- *
- *  Created on: 12/04/2013
- *      Author: Ramón Díaz Valenzuela
+ *	@brief Almacena un usuario del sistema.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef USUARIO_H_

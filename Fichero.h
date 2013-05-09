@@ -1,8 +1,8 @@
 /*
  * Fichero.h
- *
- *  Created on: 12/04/2013
- *      Author: Ramón Díaz Valenzuela
+ *	@brief Representa un fichero en el sistema de recursos.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef FICHERO_H_

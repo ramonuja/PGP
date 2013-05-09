@@ -1,8 +1,8 @@
 /*
  * UG.h
- * Mantiene las relaciones entre los Usuarios y los Grupos.
- *  Created on: 26/04/2013
- *      Author: Ramón Díaz Valenzuela
+ *	@brief Sirve para mantener las relaciones entre ususarios y grupos.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef UG_H_

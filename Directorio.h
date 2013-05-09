@@ -1,8 +1,8 @@
 /*
  * Directorio.h
- *
- *  Created on: 12/04/2013
- *      Author: Ramón Díaz Valenzuela
+ *	@brief Representa un directorio en el sistema de recursos.
+ *  @date 03/05/2013
+ *  @Author: Ramón Díaz Valenzuela
  */
 
 #ifndef DIRECTORIO_H_
